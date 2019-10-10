@@ -1,0 +1,3 @@
+contract("My contract", accounts => {
+
+})
