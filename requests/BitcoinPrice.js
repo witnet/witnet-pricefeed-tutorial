@@ -29,13 +29,13 @@ const tally = new Witnet.Tally(aggregator)          // Create a new tally functi
 
 // This is the Witnet.Request object that needs to be exported
 const request = new Witnet.Request()
-  .addSource(bitstamp)         // Use source 1
-  .addSource(coindesk)         // Use source 2
+  .addSource(bitstamp)       // Use source 1
+  .addSource(coindesk)       // Use source 2
   .setAggregator(aggregator) // Set the aggregation script
-  .setTally(tally)             // Set the tally script
-  .setQuorum(4, 2)             // Set witness count
-  .setFees(10, 1, 1, 1)        // Set economic incentives
-  .schedule(0)                 // Make this request immediately solvable
+  .setTally(tally)           // Set the tally script
+  .setQuorum(4, 2, 3)        // Set witness count
+  .setFees(10, 1, 1, 1)      // Set economic incentives
+  .schedule(0)               // Make this request immediately solvable
 
 // Do not forget to export the request object
 export { request as default }
