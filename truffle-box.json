@@ -1,0 +1,13 @@
+{
+  "ignore": [
+	".gitignore"
+  ],
+  "commands": {
+    "Compile project": "npm run compile / yarn compile",
+    "Migrate / deploy": "npm run migrate / yarn migrate",
+    "Run tests": "npm test / yarn test"
+  },
+  "hooks": {
+    "post-unpack": "npm install"
+  }
+}
