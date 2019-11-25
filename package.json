@@ -1,17 +1,17 @@
 {
-  "name": "witnet-pricefeed-example",
+  "name": "witnet-truffle-box",
   "version": "0.1.0",
   "description": "A truffle box enabling Solidity contracts to query the Witnet Decentralized Oracle Network",
   "main": "witnet/lib/index.js",
   "repository": "https://github.com/witnet/truffle-box",
-  "author": "Adán SDPC <adan@stampery.com>",
+  "author": "Adán SDPC <adan@witnet.foundation>",
   "license": "MIT",
   "private": false,
   "scripts": {
     "test": "truffle test",
     "console": "truffle console",
     "compile": "npm run compile-requests && npm run compile-contracts",
-    "compile-requests": "chmod +x ./node_modules/truffle-box/witnet/lib/rad2sol.js && ./node_modules/truffle-box/witnet/lib/rad2sol.js",
+    "compile-requests": "chmod +x ./node_modules/witnet-requests/src/ethereum/truffle/rad2sol.js && ./node_modules/witnet-requests/src/ethereum/truffle/rad2sol.js",
     "compile-contracts": "truffle compile --all",
     "fmt": "solium -d contracts && eslint ./test",
     "fmt!": "solium -d contracts --fix && eslint ./test --fix",
@@ -22,18 +22,15 @@
     "coverage": "solidity-coverage"
   },
   "dependencies": {
-    "cbor": "^4.3.0",
     "openzeppelin-solidity": "^2.4.0",
-    "truffle-box": "git+https://github.com/witnet/truffle-box.git#master",
     "truffle-plugin-verify": "^0.3.5",
-    "witnet-ethereum-bridge": "git+https://github.com/aesedepece/witnet-ethereum-bridge.git#request-result",
-    "witnet-requests": "git+https://github.com/witnet/witnet-requests-js.git#master",
-    "witnet-truffle-box": "git+https://github.com/witnet/truffle-box.git#master"
+    "witnet-ethereum-bridge": "git+https://github.com/witnet/witnet-ethereum-bridge.git#master",
+    "witnet-requests": "^0.1.8"
   },
   "devDependencies": {
-    "@babel/core": "^7.7.2",
-    "@babel/plugin-transform-modules-commonjs": "^7.7.0",
-    "@babel/register": "^7.7.0",
+    "@babel/core": "^7.7.4",
+    "@babel/plugin-transform-modules-commonjs": "^7.7.4",
+    "@babel/register": "^7.7.4",
     "babel-plugin-inline-script-import": "^0.0.4",
     "babel-register": "^6.26.0",
     "babel-traverse": "^6.26.0",
@@ -50,7 +47,7 @@
     "node-eval": "^2.0.0",
     "protocol-buffers": "^4.1.0",
     "solidity-coverage": "^0.5.11",
-    "truffle": "^5.0.43",
+    "truffle": "^5.1.1",
     "truffle-assertions": "^0.9.2"
   }
 }
