@@ -33,16 +33,25 @@ contract PriceFeed is UsingWitnet {
     lastRequestId = witnetPostRequest(request, _witnetRequestReward, _witnetResultReward);
   }
 
+  // The `witnetRequestAccepted` modifier comes with `UsingWitnet` and allows to
+  // protect your methods from being called before the request has been successfully
+  // relayed into Witnet.
   function completeUpdate() public payable witnetRequestAccepted(lastRequestId) {
     require(pending, "There is no pending update.");
 
     // Read the result of the Witnet request
     // The `witnetReadResult` method comes with `UsingWitnet`
     Witnet.Result memory result = witnetReadResult(lastRequestId);
+
     // If the Witnet request succeeded, decode the result and update the price point
+    // If it failed, revert the transaction with a pretty-printed error message
     if (result.isOk()) {
-      bitcoinPrice = result.asInt128();
+        bitcoinPrice = result.asInt128();
+    } else {
+      (, string memory errorMessage) = result.asErrorMessage();
+      revert(errorMessage);
     }
+
     // In any case, set `pending` to false so a new update can be requested
     pending = false;
   }
