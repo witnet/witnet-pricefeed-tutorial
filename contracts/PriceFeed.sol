@@ -9,9 +9,9 @@ import "./requests/BitcoinPrice.sol";
 // Your contract needs to inherit from UsingWitnet
 contract PriceFeed is UsingWitnet {
   int128 public bitcoinPrice; // The public Bitcoin price point
-  uint256 lastRequestId;      // Stores the ID of the last Witnet request
-  bool pending;               // Tells if an update has been requested but not yet completed
-  Request request;            // The Witnet request object, is set in the constructor
+  uint256 public lastRequestId;      // Stores the ID of the last Witnet request
+  bool public pending;               // Tells if an update has been requested but not yet completed
+  Request public request;            // The Witnet request object, is set in the constructor
 
   // This constructor does a nifty trick to tell the `UsingWitnet` library where
   // to find the Witnet contracts on whatever Ethereum network you use.
