@@ -31,6 +31,9 @@ contract PriceFeed is UsingWitnet {
     // Send the request to Witnet and store the ID for later retrieval of the result
     // The `witnetPostRequest` method comes with `UsingWitnet`
     lastRequestId = witnetPostRequest(request, _witnetRequestReward, _witnetResultReward);
+
+    // Signal that there is already a pending request
+    pending = true;
   }
 
   // The `witnetRequestAccepted` modifier comes with `UsingWitnet` and allows to
