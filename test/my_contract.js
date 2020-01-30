@@ -1,3 +1,0 @@
-contract("My contract", accounts => {
-
-})
