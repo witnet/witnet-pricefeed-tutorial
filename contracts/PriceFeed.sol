@@ -49,7 +49,7 @@ contract PriceFeed is UsingWitnet {
     // If the Witnet request succeeded, decode the result and update the price point
     // If it failed, revert the transaction with a pretty-printed error message
     if (result.isOk()) {
-        bitcoinPrice = result.asInt128();
+      bitcoinPrice = result.asInt128();
     } else {
       (, string memory errorMessage) = result.asErrorMessage();
       revert(errorMessage);
