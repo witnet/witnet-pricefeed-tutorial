@@ -18,6 +18,7 @@
     "flatten": " mkdir contracts/flattened/ 2>/dev/null; npx truffle-flattener contracts/*.sol > contracts/flattened/Flattened.sol",
     "fmt": "npm run solium && npm run lint",
     "fmt!": "npm run solium:fix && npm run lint:fix",
+    "postinstall": "mkdir -p build/contracts >/dev/null 2>1; cp node_modules/witnet-ethereum-bridge/build/contracts/MockWitnetBridgeInterface.json build/contracts",
     "solium": "solium -d contracts",
     "solium:fix": "solium -d contracts --fix",
     "lint": "eslint ./requests ./test",
