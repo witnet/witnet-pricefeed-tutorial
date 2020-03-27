@@ -21,7 +21,7 @@ contract PriceFeed is UsingWitnet {
 
   // This constructor does a nifty trick to tell the `UsingWitnet` library where
   // to find the Witnet contracts on whatever Ethereum network you use.
-  constructor (address _wbi) UsingWitnet(_wbi) public {
+  constructor (address _wrb) UsingWitnet(_wrb) public {
     // Instantiate the Witnet request
     request = new BitcoinPriceRequest();
   }
@@ -29,14 +29,12 @@ contract PriceFeed is UsingWitnet {
   function requestUpdate() public payable {
     require(!pending, "An update is already pending. Complete it first before requesting another update.");
 
-    // Amount to pay to the bridge node relaying this request from Ethereum to Witnet
-    uint256 _witnetRequestReward = 100 szabo;
     // Amount of wei to pay to the bridge node relaying the result from Witnet to Ethereum
     uint256 _witnetResultReward = 100 szabo;
 
     // Send the request to Witnet and store the ID for later retrieval of the result
     // The `witnetPostRequest` method comes with `UsingWitnet`
-    lastRequestId = witnetPostRequest(request, _witnetRequestReward, _witnetResultReward);
+    lastRequestId = witnetPostRequest(request, _witnetResultReward);
 
     // Signal that there is already a pending request
     pending = true;
