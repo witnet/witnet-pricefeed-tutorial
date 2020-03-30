@@ -1,10 +1,10 @@
 {
-  "name": "witnet-truffle-box",
+  "name": "witnet-pricefeed-example",
   "version": "0.1.0",
-  "description": "A truffle box enabling Solidity contracts to query the Witnet Decentralized Oracle Network",
+  "description": "A totally decentralized BTC<>USD price feed example built with Solidity, Truffle and Witnet",
   "main": "witnet/lib/index.js",
-  "repository": "https://github.com/witnet/truffle-box",
-  "author": "Adán SDPC <adan@witnet.foundation>",
+  "repository": "https://github.com/witnet/witnet-pricefeed-example",
+  "author": "Witnet Devs <devs@witnet.io>",
   "license": "MIT",
   "private": false,
   "scripts": {
