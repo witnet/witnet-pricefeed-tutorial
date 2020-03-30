@@ -21,7 +21,7 @@ contract PriceFeed is UsingWitnet {
 
   // This constructor does a nifty trick to tell the `UsingWitnet` library where
   // to find the Witnet contracts on whatever Ethereum network you use.
-  constructor (address _wbi) UsingWitnet(_wbi) public {
+  constructor (address _wrb) UsingWitnet(_wrb) public {
     // Instantiate the Witnet request
     request = new BitcoinPriceRequest();
   }
