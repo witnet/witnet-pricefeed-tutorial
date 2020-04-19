@@ -56,7 +56,15 @@ module.exports = {
 
   // The `solc` compiler is set to optimize output bytecode with 200 runs, which is the standard these days
   compilers: {
-    solc: { settings: {optimizer: { enabled: true, runs: 200 } }},
+    solc: {
+      settings: {
+        optimizer: {
+          enabled: true,
+          runs: 200
+        }
+      },
+      version: "0.6.6"
+    },
   },
 
   // This plugin allows to verify the source code of your contracts on Etherscan with this command:

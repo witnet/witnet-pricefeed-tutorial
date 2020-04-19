@@ -1,4 +1,4 @@
-pragma solidity ^0.5.0;
+pragma solidity 0.6.6;
 pragma experimental ABIEncoderV2;
 
 // Import the UsingWitnet library that enables interacting with Witnet
@@ -26,7 +26,7 @@ contract PriceFeed is UsingWitnet {
     request = new BitcoinPriceRequest();
   }
 
-  function requestUpdate() public payable {
+  function requestUpdate() external payable {
     require(!pending, "An update is already pending. Complete it first before requesting another update.");
 
     // Amount to pay to the bridge node relaying this request from Ethereum to Witnet
@@ -45,7 +45,7 @@ contract PriceFeed is UsingWitnet {
   // The `witnetRequestAccepted` modifier comes with `UsingWitnet` and allows to
   // protect your methods from being called before the request has been successfully
   // relayed into Witnet.
-  function completeUpdate() public witnetRequestAccepted(lastRequestId) {
+  function completeUpdate() external witnetRequestAccepted(lastRequestId) {
     require(pending, "There is no pending update.");
 
     // Read the result of the Witnet request
