@@ -21,8 +21,8 @@ contract PriceFeedERC2362Wrapper is UsingWitnet, IERC2362 {
   /**
   * @notice Constructs the contract by storing the address to the existing `PriceFeed` contract it is wrapping.
   **/
-  constructor (address _wrb, address _inner) UsingWitnet(_wrb) public {
-    inner = _inner;
+  constructor (address _wrb, address _priceFeed) UsingWitnet(_wrb) public {
+    inner = _priceFeed;
   }
 
   /**
