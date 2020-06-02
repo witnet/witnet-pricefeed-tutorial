@@ -1,4 +1,6 @@
-pragma solidity ^0.5.0;
+// SPDX-License-Identifier: MIT
+
+pragma solidity 0.6.8;
 pragma experimental ABIEncoderV2;
 
 // Import the UsingWitnet library that enables interacting with Witnet
