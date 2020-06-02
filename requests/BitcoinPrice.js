@@ -22,7 +22,7 @@ const coindesk = new Witnet.Source("https://api.coindesk.com/v1/bpi/currentprice
 // values that pass the filter.
 const aggregator = new Witnet.Aggregator({
   filters: [
-    [ Witnet.Types.FILTERS.deviationStandard, 1.5 ],
+    [Witnet.Types.FILTERS.deviationStandard, 1.5],
   ],
   reducer: Witnet.Types.REDUCERS.averageMean,
 })
@@ -32,7 +32,7 @@ const aggregator = new Witnet.Aggregator({
 // values that pass the filter.
 const tally = new Witnet.Tally({
   filters: [
-    [ Witnet.Types.FILTERS.deviationStandard, 1.0 ],
+    [Witnet.Types.FILTERS.deviationStandard, 1.0],
   ],
   reducer: Witnet.Types.REDUCERS.averageMean,
 })
@@ -43,7 +43,7 @@ const request = new Witnet.Request()
   .addSource(coindesk) // Use source 2
   .setAggregator(aggregator) // Set the aggregator function
   .setTally(tally) // Set the tally function
-  .setQuorum(4, 1, 2, 5, 70) // Set witness count
+  .setQuorum(4, 70) // Set witness count
   .setFees(10, 1, 1, 1) // Set economic incentives
   .schedule(0) // Make this request immediately solvable
 

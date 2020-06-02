@@ -14,14 +14,14 @@ contract PriceFeed is UsingWitnet {
   Request public request;            // The Witnet request object, is set in the constructor
 
   // emits when the price is updated
-  event priceUpdated(uint64);
+  event PriceUpdated(uint64);
 
   // emits when found an error decoding request result
-  event resultError(string);
+  event ResultError(string);
 
   // This constructor does a nifty trick to tell the `UsingWitnet` library where
   // to find the Witnet contracts on whatever Ethereum network you use.
-  constructor (address _wrb) UsingWitnet(_wrb) public {
+  constructor (address _wrb) public UsingWitnet(_wrb) {
     // Instantiate the Witnet request
     request = new BitcoinPriceRequest();
   }
@@ -56,10 +56,10 @@ contract PriceFeed is UsingWitnet {
     // If it failed, revert the transaction with a pretty-printed error message
     if (result.isOk()) {
       bitcoinPrice = result.asUint64();
-      emit priceUpdated(bitcoinPrice);
+      emit PriceUpdated(bitcoinPrice);
     } else {
       (, string memory errorMessage) = result.asErrorMessage();
-      emit resultError(errorMessage);
+      emit ResultError(errorMessage);
     }
 
     // In any case, set `pending` to false so a new update can be requested
