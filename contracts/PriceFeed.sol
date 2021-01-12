@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity 0.6.8;
+pragma solidity 0.6.12;
 pragma experimental ABIEncoderV2;
 
 // Import the UsingWitnet library that enables interacting with Witnet
@@ -35,10 +35,12 @@ contract PriceFeed is UsingWitnet {
     uint256 _witnetRequestReward = 100 szabo;
     // Amount of wei to pay to the bridge node relaying the result from Witnet to Ethereum
     uint256 _witnetResultReward = 100 szabo;
+    // Amount of wei to pay to the bridge node relaying the block containing the request to the Block Relay
+    uint256 _witnetBlockReward = 100 szabo;
 
     // Send the request to Witnet and store the ID for later retrieval of the result
     // The `witnetPostRequest` method comes with `UsingWitnet`
-    lastRequestId = witnetPostRequest(request, _witnetRequestReward, _witnetResultReward);
+    lastRequestId = witnetPostRequest(request, _witnetRequestReward, _witnetResultReward, _witnetBlockReward);
 
     // Signal that there is already a pending request
     pending = true;
