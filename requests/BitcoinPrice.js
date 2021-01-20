@@ -2,7 +2,7 @@ import * as Witnet from "witnet-requests"
 
 // Retrieves USD price of a bitcoin from the BitStamp API
 const bitstamp = new Witnet.Source("https://www.bitstamp.net/api/ticker/")
-  .parseMapJSON() // Parse a `Map` from the retrieved `String`
+  .parseJSONMap() // Parse a `Map` from the retrieved `String`
   .getFloat("last") // Get the `Float` value associated to the `last` key
   .multiply(1000)
   .round()
@@ -10,7 +10,7 @@ const bitstamp = new Witnet.Source("https://www.bitstamp.net/api/ticker/")
 // Retrieves USD price of a bitcoin from CoinDesk's "bitcoin price index" API
 // The JSON here is a bit more complex, thus more operators are needed
 const coindesk = new Witnet.Source("https://api.coindesk.com/v1/bpi/currentprice.json")
-  .parseMapJSON() // Parse a `Map` from the retrieved `String`
+  .parseJSONMap() // Parse a `Map` from the retrieved `String`
   .getMap("bpi") // Get the `Map` value associated to the `bpi` key
   .getMap("USD") // Get the `Map` value associated to the `USD` key
   .getFloat("rate_float") // Get the `Float` value associated to the `rate_float` key
@@ -22,7 +22,7 @@ const coindesk = new Witnet.Source("https://api.coindesk.com/v1/bpi/currentprice
 // values that pass the filter.
 const aggregator = new Witnet.Aggregator({
   filters: [
-    [Witnet.Types.FILTERS.deviationStandard, 1.5],
+    [ Witnet.Types.FILTERS.deviationStandard, 1.5 ],
   ],
   reducer: Witnet.Types.REDUCERS.averageMean,
 })
@@ -32,7 +32,7 @@ const aggregator = new Witnet.Aggregator({
 // values that pass the filter.
 const tally = new Witnet.Tally({
   filters: [
-    [Witnet.Types.FILTERS.deviationStandard, 1.0],
+    [ Witnet.Types.FILTERS.deviationStandard, 1.5 ],
   ],
   reducer: Witnet.Types.REDUCERS.averageMean,
 })
@@ -44,7 +44,7 @@ const request = new Witnet.Request()
   .setAggregator(aggregator) // Set the aggregator function
   .setTally(tally) // Set the tally function
   .setQuorum(4, 70) // Set witness count
-  .setFees(10, 1, 1, 1) // Set economic incentives
+  .setFees(10, 1) // Set economic incentives
   .schedule(0) // Make this request immediately solvable
 
 // Do not forget to export the request object

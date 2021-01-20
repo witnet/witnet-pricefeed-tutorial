@@ -28,15 +28,8 @@ contract PriceFeed is UsingWitnet {
     request = new BitcoinPriceRequest();
   }
 
-  function requestUpdate() public payable {
+  function requestUpdate(uint256 _witnetRequestReward, uint256 _witnetResultReward, uint256 _witnetBlockReward) public payable {
     require(!pending, "An update is already pending. Complete it first before requesting another update.");
-
-    // Amount to pay to the bridge node relaying this request from Ethereum to Witnet
-    uint256 _witnetRequestReward = 100 szabo;
-    // Amount of wei to pay to the bridge node relaying the result from Witnet to Ethereum
-    uint256 _witnetResultReward = 100 szabo;
-    // Amount of wei to pay to the bridge node relaying the block containing the request to the Block Relay
-    uint256 _witnetBlockReward = 100 szabo;
 
     // Send the request to Witnet and store the ID for later retrieval of the result
     // The `witnetPostRequest` method comes with `UsingWitnet`
