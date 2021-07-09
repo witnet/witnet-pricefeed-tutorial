@@ -16,11 +16,15 @@
     "compile-flattened": "npx truffle compile --all --config flattened-config.js ",
     "coverage": "solidity-coverage",
     "flatten": " mkdir contracts/flattened/ 2>/dev/null; npx truffle-flattener contracts/*.sol > contracts/flattened/Flattened.sol",
-    "fmt": "solhint --max-warnings 0 \"contracts/**/*.sol\" && eslint ./requests",
-    "fmt!": "solhint --max-warnings 0 \"contracts/**/*.sol\" --fix && eslint ./requests --fix",
-    "postinstall": "mkdir -p build/contracts >/dev/null 2>&1; cp node_modules/witnet-ethereum-bridge/build/contracts/MockWitnetRequestsBoard.json build/contracts",
+    "fmt": "solium -d contracts && eslint ./test",
+    "fmt!": "solium -d contracts --fix && eslint ./test --fix",
+    "solium": "solium -d contracts",
+    "solium:fix": "solium -d contracts --fix",
+    "lint": "eslint ./test",
+    "lint:fix": "eslint ./test --fix",
     "migrate": "npx truffle migrate",
     "migrate-flattened": "npm run flatten && npx truffle migrate --config flattened-config.js",
+    "postinstall": "mkdir -p build/contracts >/dev/null 2>&1; cp node_modules/witnet-ethereum-bridge/build/contracts/*.json build/contracts",
     "verify-flattened": "npx truffle run verify"
   },
   "dependencies": {
