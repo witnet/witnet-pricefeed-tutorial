@@ -37,15 +37,14 @@ const tally = new Witnet.Tally({
   reducer: Witnet.Types.REDUCERS.averageMean,
 })
 
-// This is the Witnet.Request object that needs to be exported
 const request = new Witnet.Request()
   .addSource(bitstamp) // Use source 1
   .addSource(coindesk) // Use source 2
-  .setAggregator(aggregator) // Set the aggregator function
-  .setTally(tally) // Set the tally function
-  .setQuorum(4, 70) // Set witness count
-  .setFees(10, 1) // Set economic incentives
-  .schedule(0) // Make this request immediately solvable
+  .setAggregator(aggregator) // Set the aggregation script
+  .setTally(tally) // Set the tally script
+  .setQuorum(100) // Set witness count
+  .setFees(1000000, 1000) // Set economic incentives (e.g. reward: 1 mWit, fee: 1 uWit)
+  .setCollateral(10000000000) // Set collateral (e.g. 10 Wit)
 
 // Do not forget to export the request object
 export { request as default }
