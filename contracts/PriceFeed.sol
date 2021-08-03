@@ -72,6 +72,7 @@ contract PriceFeed is UsingWitnet {
     // If it failed, revert the transaction with a pretty-printed error message
     if (result.isOk()) {
       lastPrice = result.asUint64();
+      // solhint-disable-next-line not-rely-on-time
       timestamp = block.timestamp;
       emit PriceUpdated(lastPrice);
     } else {
@@ -91,4 +92,3 @@ contract PriceFeed is UsingWitnet {
     pending = false;
   }
 }
-
