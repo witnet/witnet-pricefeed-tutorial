@@ -1,12 +1,5 @@
-node_modules/
-build/
+node_modules
+build
+
 yarn.lock
 package-lock.json
-
-.idea
-.vscode
-
-contracts/flattened
-contracts/requests
-migrations/2_witnet_core.js
-migrations/3_user_contracts.js
