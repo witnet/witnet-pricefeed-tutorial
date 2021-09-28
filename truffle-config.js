@@ -72,7 +72,8 @@ console.info(`Configuring "${realm}" target realm...
 > Available realms and chains can be found in "migrations/1_witnet_core.js"`)
 
 // Use realm-specific compiler settings
-const compilers = { ...witnetSettings.compilers.default, ...witnetSettings.compilers[realm] }
+const { merge } = require("lodash")
+const compilers = merge(witnetSettings.compilers.default, witnetSettings.compilers[realm])
 
 // Make sure that all configured networks are prefixed with a valid realm
 const supportedNetworks = Object.entries(witnetSettings.networks).reduce((acc, [realmKey, realmVal]) => {
