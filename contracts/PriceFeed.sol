@@ -74,6 +74,7 @@ contract PriceFeed is UsingWitnet {
         // `witnet.isOk()`, `witnet.asUint64()` and `witnet.asErrorMessage()` come with `UsingWitnet`
         if (witnet.isOk(result)) {
             lastPrice = witnet.asUint64(result);
+            // solhint-disable-next-line not-rely-on-time
             timestamp = block.timestamp;
             emit PriceUpdated(lastPrice);
         } else {
