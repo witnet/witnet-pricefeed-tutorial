@@ -1,6 +1,6 @@
 {
   "name": "witnet-pricefeed-example",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A totally decentralized BTC<>USD price feed example built with Solidity, Truffle and Witnet",
   "main": "witnet/lib/index.js",
   "repository": "https://github.com/witnet/witnet-pricefeed-example",
@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "witnet-ethereum-bridge": "~0.4.2",
-    "witnet-requests": "~0.6.2"
+    "witnet-requests": "~0.7.0"
   },
   "devDependencies": {
     "dotenv": "8.2.0",
